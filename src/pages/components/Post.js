@@ -5,10 +5,10 @@ const Post = (post) => {
   console.log(post.post.title);
 
   return (
-    <>
+    <article>
       <h2>{post.post.title}</h2>
-      <div>{parse(post.post.content)}</div>
-    </>
+      <div className="post-content">{parse(post.post.content)}</div>
+    </article>
   );
 };
 

@@ -67,12 +67,6 @@ const blog = () => {
           ))}
         </section>
         <div id="blog-pagination">
-          {/* <button id="prev-button" onClick={() => setPage(pageCount - 1)}>
-            Previous page
-          </button>
-          <button id="next-button" onClick={() => setPage(pageCount + 1)}>
-            Next page
-          </button> */}
           <Link href={`/blog?page=${page === undefined ? 1 : +page - 1}`}>
             Previous page
           </Link>

@@ -93,6 +93,19 @@ body {
         }
       }
 
+      #main-page-content {
+        article {
+          padding-bottom: 30px;
+
+          h2 {
+            font-size: 25px;
+          }
+
+          .post-content {
+          }
+        }
+      }
+
       #blog-pagination {
         display: flex;
         gap: 10px;
