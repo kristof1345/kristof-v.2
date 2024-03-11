@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Post from "./components/Post";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const blog = () => {
+  const router = useRouter();
+  const { page } = router.query;
+
   const [postObject, setPostObject] = useState([]);
-  const [page, setPage] = useState(1);
-  console.log(page);
+  // const [pageCount, setPage] = useState(page);
+  // console.log(pageCount);
 
   useEffect(() => {
     axios
@@ -22,6 +28,10 @@ const blog = () => {
         console.log(error);
       });
   }, [page]);
+
+  if (page === "0") {
+    window.location.href = "http://localhost:3000/blog?page=1";
+  }
 
   return (
     <>
@@ -56,9 +66,19 @@ const blog = () => {
             <Post key={i} post={post} />
           ))}
         </section>
-        <div>
-          <button onClick={() => setPage(page + 1)}>Next page</button>
-          <button onClick={() => setPage(page - 1)}>Previous page</button>
+        <div id="blog-pagination">
+          {/* <button id="prev-button" onClick={() => setPage(pageCount - 1)}>
+            Previous page
+          </button>
+          <button id="next-button" onClick={() => setPage(pageCount + 1)}>
+            Next page
+          </button> */}
+          <Link href={`/blog?page=${page === undefined ? 1 : +page - 1}`}>
+            Previous page
+          </Link>
+          <Link href={`/blog?page=${page === undefined ? 2 : +page + 1}`}>
+            Next page
+          </Link>
         </div>
       </main>
     </>

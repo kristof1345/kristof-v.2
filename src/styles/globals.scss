@@ -92,6 +92,18 @@ body {
           min-width: 350px;
         }
       }
+
+      #blog-pagination {
+        display: flex;
+        gap: 10px;
+
+        button {
+          border: none;
+          background-color: #dbdbdb;
+          border-radius: 0.5rem;
+          padding: 10px 30px;
+        }
+      }
     }
   }
 }

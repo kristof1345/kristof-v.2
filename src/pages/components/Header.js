@@ -15,8 +15,8 @@ const Header = () => {
       <div className="navigation">
         <div className="nav-main">
           {/* <span> */}
-          <Link href="#">Newsletter</Link>
-          <Link href="#">Archive</Link>
+          {/* <Link href="#">Newsletter</Link> */}
+          {/* <Link href="#">Archive</Link> */}
           {/* </span> */}
         </div>
       </div>
