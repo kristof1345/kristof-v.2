@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Noto+Sans:wght@200;300;400;500;600;700;800;900&display=swap");
+
+$noto: "Noto Sans", sans-serif;
+$inter: "Inter", sans-serif;
+$roman: times new roman;
+
+// $background: #fffff1;
+$background: #ffffff;
+$basictextcolor: #222222;
+$textsize: 16px;
+
+* {
+  font-family: $inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: $textsize;
+  line-height: 28px;
+  color: $basictextcolor;
+  background-color: $background;
+  transition: 200ms ease-in-out;
+}
+
+h2 {
+  font-weight: 800;
+}
+
+body {
+  margin: 0;
+
+  #__next {
+    max-width: 730px;
+    padding: 30px;
+    padding-top: 35px;
+    margin: 0 auto 0 auto;
+
+    #header {
+      .site-branding {
+        text-align: center;
+        .site-title {
+          a {
+            font-family: $noto;
+            font-weight: 800;
+            font-size: 25px;
+            text-decoration: none;
+          }
+        }
+        .site-summary {
+          font-size: 14px;
+          font-style: italic;
+          opacity: 0.7;
+        }
+      }
+
+      .navigation {
+        .nav-main {
+          display: flex;
+          justify-content: center;
+          a {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            padding: 0 15px;
+            height: 70px;
+            text-decoration: underline;
+          }
+          a:hover {
+            // color: #6666ff;
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+
+    #home {
+      #home-sub-sec-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 0 90px 0;
+        h1 {
+          font-size: 52px;
+          font-family: $roman;
+          margin-bottom: 25px;
+          line-height: 1;
+        }
+        p {
+          text-align: center;
+          margin: 0;
+          padding: 0 65px;
+        }
+        .home-sub-holder {
+          min-width: 350px;
+        }
+      }
+    }
+  }
+}
