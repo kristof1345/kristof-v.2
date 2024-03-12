@@ -17,15 +17,18 @@ export default function Home() {
             teaching you a quick lesson you can immediately use to become more
             persuasive and influential.
           </p>
-          <p>Here's what inside:</p>
+          <p>Here&apos;s what inside:</p>
           <div className="bullet-list">
             <p className="bold">
               * The 6 Billion Dollar Copywriter Who Made A Rookie Mistake…
             </p>
             <p>
-              * Nobody Wants Your Whacky Product? Here's How To Make It Sell.
+              * Nobody Wants Your Whacky Product? Here&apos;s How To Make It
+              Sell.
             </p>
-            <p className="bold">* Internet Pioneer's Blueprint For Headlines</p>
+            <p className="bold">
+              * Internet Pioneer&apos;s Blueprint For Headlines
+            </p>
             <p>
               * How To Sell A Hostile Prospect Who Cusses At You And Wishes You
               To Hell

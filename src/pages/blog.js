@@ -37,9 +37,9 @@ const blog = () => {
           <h1>My name is Kristof. Take a look:</h1>
           <p>
             I write a daily email newsletter about copywriting, direct marketing
-            and whatever is on my mind at the moment. It's free, plus you get a
-            gift from me personaly once you join. Don't be shy, smack that
-            button:
+            and whatever is on my mind at the moment. It&apos;s free, plus you
+            get a gift from me personaly once you join. Don&apos;t be shy, smack
+            that button:
           </p>
           <div className="blog-sub-holder">
             <iframe
