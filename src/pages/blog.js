@@ -4,7 +4,7 @@ import Post from "./components/Post";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-const blog = () => {
+export default function Blog() {
   const router = useRouter();
   const { page } = router.query;
 
@@ -74,6 +74,4 @@ const blog = () => {
       </main>
     </>
   );
-};
-
-export default blog;
+}
