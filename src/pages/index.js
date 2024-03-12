@@ -1,39 +1,49 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import Post from "./components/Post";
+import Link from "next/link";
 
 export default function Home() {
-  const [postObject, setPostObject] = useState([]);
-  const [page, setPage] = useState(1);
-  console.log(page);
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://public-api.wordpress.com/rest/v1/sites/nonfictium.wordpress.com/posts?number=2&page=${page}`
-      )
-      .then(function (response) {
-        // handle success
-        console.log(response.data.posts);
-        setPostObject(response.data.posts);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
-  }, [page]);
-
   return (
     <>
       <main id="home">
-        <section id="home-sub-sec-top">
-          <h1>My name is Kristof. Take a look:</h1>
+        <section id="headline">
+          <p>FREE book reveals...</p>
+          <h1>5 Copywriting Lessons From The Masters Of Persuasion</h1>
+        </section>
+
+        <section id="home-content">
           <p>
-            I write a daily email newsletter about copywriting, direct marketing
-            and whatever is on my mind at the moment. It's free, plus you get a
-            gift from me personaly once you join. Don't be shy, smack that
-            button:
+            A short book assembled from the teachings of 5 masters of persuasion
+            ranging from the all times best negotiators to copywriters... Each
+            teaching you a quick lesson you can immediately use to become more
+            persuasive and influential.
           </p>
+          <p>Here's what inside:</p>
+          <div className="bullet-list">
+            <p className="bold">
+              * The 6 Billion Dollar Copywriter Who Made A Rookie Mistake…
+            </p>
+            <p>
+              * Nobody Wants Your Whacky Product? Here's How To Make It Sell.
+            </p>
+            <p className="bold">* Internet Pioneer's Blueprint For Headlines</p>
+            <p>
+              * How To Sell A Hostile Prospect Who Cusses At You And Wishes You
+              To Hell
+            </p>
+            <p className="bold">
+              * The Dangers Of Not Wearing A Seatbelt… And How It Can Help You
+              Convince People
+            </p>
+          </div>
+          <p>
+            Now, you can get it for FREE, all you have to do is simply put your
+            primary emial address into the form below.
+          </p>
+          <p>
+            After that, the book will be immediately sent to you via email
+            without charge.
+          </p>
+          <p>Just your email, please:</p>
           <div className="home-sub-holder">
             <iframe
               src="https://embeds.beehiiv.com/cee325e0-9382-4e37-975e-2bab94da0abd?slim=true"
@@ -42,24 +52,22 @@ export default function Home() {
               frameBorder={0}
               scrolling="no"
               style={{
-                margin: "27px 0 0 0",
+                margin: "5px 0 0 0",
                 width: "100%",
                 borderRadius: "0px !important",
                 backgroundColor: "transparent",
               }}
             />
+            <span>I respect your privacy. Unsubscribe any time.</span>
+          </div>
+          <div className="redirect-to-blog">
+            <Link href={`/blog?page=1`}>No, Thanks.</Link>
+            <Link href={`/blog?page=1`}>
+              I would like to go to the website and read the free copywriting,
+              marketing and persuaion tips there
+            </Link>
           </div>
         </section>
-        <section id="main-page-content">
-          {console.log(postObject)}
-          {postObject.map((post, i) => (
-            <Post key={i} post={post} />
-          ))}
-        </section>
-        <div>
-          <button onClick={() => setPage(page + 1)}>Next page</button>
-          <button onClick={() => setPage(page - 1)}>Previous page</button>
-        </div>
       </main>
     </>
   );

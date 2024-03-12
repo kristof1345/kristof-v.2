@@ -3,15 +3,12 @@ import axios from "axios";
 import Post from "./components/Post";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 const blog = () => {
   const router = useRouter();
   const { page } = router.query;
 
   const [postObject, setPostObject] = useState([]);
-  // const [pageCount, setPage] = useState(page);
-  // console.log(pageCount);
 
   useEffect(() => {
     axios
@@ -35,8 +32,8 @@ const blog = () => {
 
   return (
     <>
-      <main id="home">
-        <section id="home-sub-sec-top">
+      <main id="blog">
+        <section id="blog-sub-sec-top">
           <h1>My name is Kristof. Take a look:</h1>
           <p>
             I write a daily email newsletter about copywriting, direct marketing
@@ -44,7 +41,7 @@ const blog = () => {
             gift from me personaly once you join. Don't be shy, smack that
             button:
           </p>
-          <div className="home-sub-holder">
+          <div className="blog-sub-holder">
             <iframe
               src="https://embeds.beehiiv.com/cee325e0-9382-4e37-975e-2bab94da0abd?slim=true"
               data-test-id="beehiiv-embed"
