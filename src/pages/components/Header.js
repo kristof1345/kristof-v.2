@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const Header = () => {
+export default function Header() {
   return (
     <div id="header">
       <div className="site-branding">
@@ -22,6 +22,4 @@ const Header = () => {
       </div>
     </div>
   );
-};
-
-export default Header;
+}

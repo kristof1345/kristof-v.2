@@ -1,9 +1,7 @@
 import React from "react";
 import parse from "html-react-parser";
 
-const Post = (post) => {
-  console.log(post.post.title);
-
+export default function Post(post) {
   return (
     <article>
       <h2>{post.post.title === undefined ? null : post.post.title}</h2>
@@ -12,6 +10,4 @@ const Post = (post) => {
       </div>
     </article>
   );
-};
-
-export default Post;
+}
