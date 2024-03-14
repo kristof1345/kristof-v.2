@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
 import Post from "./components/Post";
 import { useRouter } from "next/router";
 import Link from "next/link";
