@@ -3,12 +3,21 @@ import axios from "axios";
 import Post from "./components/Post";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { getPosts } from "@/lib/api";
 
-export default function Blog() {
+// `https://public-api.wordpress.com/rest/v1/sites/nonfictium.wordpress.com/posts?number=2&page=${page}`
+
+export default function Blog({ posts }) {
   const router = useRouter();
   const { page } = router.query;
 
   const [postObject, setPostObject] = useState([]);
+
+  console.log(posts.data.posts);
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   useEffect(() => {
     axios
@@ -17,7 +26,7 @@ export default function Blog() {
       )
       .then(function (response) {
         // handle success
-        console.log(response.data.posts);
+        // console.log(response.data.posts);
         setPostObject(response.data.posts);
       })
       .catch(function (error) {
@@ -58,9 +67,9 @@ export default function Blog() {
           </div>
         </section>
         <section id="main-page-content">
-          {console.log(postObject)}
-          {postObject.length > 0 &&
-            postObject.map((post, i) => <Post key={i} post={post} />)}
+          {/* {console.log(postObject)} */}
+          {posts.data.posts.length > 0 &&
+            posts.data.posts.map((post, i) => <Post key={i} post={post} />)}
         </section>
         <div id="blog-pagination">
           <Link href={`/blog?page=${page === undefined ? 1 : +page - 1}`}>
@@ -73,4 +82,23 @@ export default function Blog() {
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  // Fetch data for the specific post
+  const posts = await getPosts();
+
+  // console.log(posts);
+
+  // Set default values if the post is not found
+  const defaultPost = {
+    title: "Default Title",
+    content: "Default Content",
+  };
+
+  return {
+    props: {
+      posts: posts || defaultPost,
+    },
+  };
 }
