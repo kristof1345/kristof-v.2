@@ -11,7 +11,7 @@ export default function Blog({ posts }) {
   const router = useRouter();
   const { page } = router.query;
 
-  const [postObject, setPostObject] = useState([]);
+  // const [postObject, setPostObject] = useState([]);
 
   console.log(posts.data.posts);
 
@@ -19,21 +19,21 @@ export default function Blog({ posts }) {
     return <div>Loading...</div>;
   }
 
-  useEffect(() => {
-    axios
-      .get(
-        `https://public-api.wordpress.com/rest/v1/sites/nonfictium.wordpress.com/posts?number=2&page=${page}`
-      )
-      .then(function (response) {
-        // handle success
-        // console.log(response.data.posts);
-        setPostObject(response.data.posts);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
-  }, [page]);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `https://public-api.wordpress.com/rest/v1/sites/nonfictium.wordpress.com/posts?number=2&page=${page}`
+  //     )
+  //     .then(function (response) {
+  //       // handle success
+  //       // console.log(response.data.posts);
+  //       setPostObject(response.data.posts);
+  //     })
+  //     .catch(function (error) {
+  //       // handle error
+  //       console.log(error);
+  //     });
+  // }, [page]);
 
   if (page === "0") {
     window.location.href = "http://localhost:3000/blog?page=1";
