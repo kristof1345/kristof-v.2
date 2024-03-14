@@ -59,9 +59,8 @@ export default function Blog() {
         </section>
         <section id="main-page-content">
           {console.log(postObject)}
-          {postObject.map((post, i) => (
-            <Post key={i} post={post} />
-          ))}
+          {postObject.length > 0 &&
+            postObject.map((post, i) => <Post key={i} post={post} />)}
         </section>
         <div id="blog-pagination">
           <Link href={`/blog?page=${page === undefined ? 1 : +page - 1}`}>
