@@ -1,4 +1,4 @@
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import axios from "axios";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -8,6 +8,8 @@ import UnfoldPosts from "./components/UnfoldPosts";
 // `https://public-api.wordpress.com/rest/v1/sites/nonfictium.wordpress.com/posts?number=2&page=${page}`
 
 export default function Blog({ allPosts }) {
+  const [fromNum, setFromNum] = useState(0);
+  const [toNum, setToNum] = useState(5);
   const router = useRouter();
   const { page } = router.query;
 
@@ -26,6 +28,18 @@ export default function Blog({ allPosts }) {
   if (page === "0") {
     window.location.href = "http://localhost:3000/blog?page=1";
   }
+
+  const goNext = () => {
+    setFromNum(fromNum + 5);
+    setToNum(toNum + 5);
+  };
+
+  const goPrev = () => {
+    if (fromNum !== 0) {
+      setFromNum(fromNum - 5);
+      setToNum(toNum - 5);
+    }
+  };
 
   return (
     <>
@@ -55,15 +69,19 @@ export default function Blog({ allPosts }) {
           </div>
         </section>
         <section id="main-page-content">
-          {allActualPosts.length > 0 && <UnfoldPosts posts={allActualPosts} />}
+          {allActualPosts.length > 0 && (
+            <UnfoldPosts
+              posts={allActualPosts}
+              fromNum={fromNum}
+              toNum={toNum}
+            />
+          )}
         </section>
         <div id="blog-pagination">
-          <Link href={`/blog?page=${page === undefined ? 1 : +page - 1}`}>
-            Previous page
-          </Link>
-          <Link href={`/blog?page=${page === undefined ? 2 : +page + 1}`}>
-            Next page
-          </Link>
+          <button disabled={fromNum <= 0 ? "disabled" : ""} onClick={goPrev}>
+            Previous Page
+          </button>
+          <button onClick={goNext}>Next Page</button>
         </div>
       </main>
     </>

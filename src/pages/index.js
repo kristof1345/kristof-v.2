@@ -63,8 +63,8 @@ export default function Home() {
             <span>I respect your privacy. Unsubscribe any time.</span>
           </div>
           <div className="redirect-to-blog">
-            <Link href={`/blog?page=1`}>No, Thanks.</Link>
-            <Link href={`/blog?page=1`}>
+            <Link href={`/blog`}>No, Thanks.</Link>
+            <Link href={`/blog`}>
               I would like to go to the website and read the free copywriting,
               marketing and persuaion tips there
             </Link>

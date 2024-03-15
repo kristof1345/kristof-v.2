@@ -3,8 +3,6 @@ import PostTitle from "./PostTitle";
 import PostBody from "./PostBody";
 
 export default function Post({ post }) {
-  console.log(post);
-
   return (
     <article>
       {/* <h2>{post.title === undefined ? null : post.title}</h2> */}
