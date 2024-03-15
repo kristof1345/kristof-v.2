@@ -6,7 +6,11 @@ export default function UnfoldPosts({ posts, fromNum, toNum }) {
   // let fromNum = 0;
   // let toNum = 5;
 
-  let firstFive = posts.slice(fromNum, toNum);
+  let firstFive;
+
+  if (posts) {
+    firstFive = posts.slice(fromNum, toNum);
+  }
 
   console.log(firstFive);
 
