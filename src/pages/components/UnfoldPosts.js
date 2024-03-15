@@ -8,7 +8,7 @@ export default function UnfoldPosts({ posts, fromNum, toNum }) {
 
   let firstFive;
 
-  if (posts) {
+  if (posts !== undefined) {
     firstFive = posts.slice(fromNum, toNum);
   }
 
