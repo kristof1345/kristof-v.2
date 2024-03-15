@@ -1,5 +1,4 @@
 import React from "react";
-import parse from "html-react-parser";
 import PostTitle from "./PostTitle";
 
 export default function Post({ post }) {
@@ -8,9 +7,9 @@ export default function Post({ post }) {
   return (
     <article>
       {/* <h2>{post.title === undefined ? null : post.title}</h2> */}
-      <PostTitle>{post.title}</PostTitle>
+      <PostTitle>{post?.title}</PostTitle>
       <div className="post-content">
-        {post.content === undefined ? null : parse(post.content)}
+        {/* {post.content === undefined ? null : parse(post.content)} */}
       </div>
     </article>
   );

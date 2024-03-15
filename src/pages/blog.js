@@ -1,6 +1,5 @@
 // import { useEffect, useState } from "react";
 // import axios from "axios";
-import Post from "./components/Post";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { getPosts } from "@/lib/api";
@@ -14,7 +13,11 @@ export default function Blog({ allPosts }) {
 
   console.log(allPosts);
 
-  const allActualPosts = allPosts.data.posts;
+  let allActualPosts = allPosts.data.posts;
+
+  if (allActualPosts === undefined || allActualPosts.length < 0) {
+    allActualPosts = "";
+  }
 
   if (router.isFallback) {
     return <div>Loading...</div>;
