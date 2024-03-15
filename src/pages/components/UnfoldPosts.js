@@ -3,10 +3,6 @@ import Post from "./Post";
 
 export default function UnfoldPosts({ posts }) {
   return (
-    <div>
-      {posts.map((postx, i) => (
-        <Post key={i} post={postx} />
-      ))}
-    </div>
+    <div>{posts && posts.map((postx, i) => <Post key={i} post={postx} />)}</div>
   );
 }
