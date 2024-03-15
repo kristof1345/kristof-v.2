@@ -4,21 +4,36 @@ import Post from "./components/Post";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { getPosts } from "@/lib/api";
-import UnfoldPosts from "./components/UnfoldPosts";
 
 // `https://public-api.wordpress.com/rest/v1/sites/nonfictium.wordpress.com/posts?number=2&page=${page}`
 
-export default function Blog({ allPosts }) {
+export default function Blog({ posts }) {
   const router = useRouter();
   const { page } = router.query;
 
-  console.log(allPosts);
+  // const [postObject, setPostObject] = useState([]);
 
-  const allActualPosts = allPosts.data.posts;
+  // console.log(posts.data.posts);
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
+
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `https://public-api.wordpress.com/rest/v1/sites/nonfictium.wordpress.com/posts?number=2&page=${page}`
+  //     )
+  //     .then(function (response) {
+  //       // handle success
+  //       // console.log(response.data.posts);
+  //       setPostObject(response.data.posts);
+  //     })
+  //     .catch(function (error) {
+  //       // handle error
+  //       console.log(error);
+  //     });
+  // }, [page]);
 
   if (page === "0") {
     window.location.href = "http://localhost:3000/blog?page=1";
@@ -52,7 +67,9 @@ export default function Blog({ allPosts }) {
           </div>
         </section>
         <section id="main-page-content">
-          {allActualPosts.length > 0 && <UnfoldPosts posts={allActualPosts} />}
+          {/* {console.log(postObject)} */}
+          {posts.data.posts.length > 0 &&
+            posts.data.posts.map((post, i) => <Post key={i} post={post} />)}
         </section>
         <div id="blog-pagination">
           <Link href={`/blog?page=${page === undefined ? 1 : +page - 1}`}>
@@ -67,12 +84,23 @@ export default function Blog({ allPosts }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps({ params }) {
+  console.log(params);
+
   // Fetch data for the specific post
-  const allPosts = await getPosts();
+  const posts = await getPosts();
+
+  // console.log(posts);
+
+  // Set default values if the post is not found
+  const defaultPost = {
+    title: "Default Title",
+    content: "Default Content",
+  };
 
   return {
-    props: { allPosts },
-    revalidate: 10,
+    props: {
+      posts: posts || defaultPost,
+    },
   };
 }

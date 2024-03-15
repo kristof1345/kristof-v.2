@@ -3,8 +3,6 @@ import axios from "axios";
 // const postsURL = `https://public-api.wordpress.com/rest/v1/sites/nonfictium.wordpress.com/posts?number=2&page=${page}`;
 
 export async function getPosts() {
-  // console.log("runs");
-
   // let res;
 
   // axios

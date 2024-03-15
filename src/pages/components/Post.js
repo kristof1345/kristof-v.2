@@ -1,12 +1,16 @@
 import React from "react";
 import parse from "html-react-parser";
+import PostTitle from "./PostTitle";
 
-export default function Post(post) {
+export default function Post({ post }) {
+  console.log(post);
+
   return (
     <article>
-      <h2>{post.post.title === undefined ? null : post.post.title}</h2>
+      {/* <h2>{post.title === undefined ? null : post.title}</h2> */}
+      <PostTitle>{post.title}</PostTitle>
       <div className="post-content">
-        {post.post.content === undefined ? null : parse(post.post.content)}
+        {post.content === undefined ? null : parse(post.content)}
       </div>
     </article>
   );
