@@ -5,12 +5,16 @@ import OutOfPages from "./OutOfPages";
 export default function UnfoldPosts({ posts, fromNum, toNum }) {
   // let fromNum = 0;
   // let toNum = 5;
-
   let firstFive;
 
-  if (posts !== undefined) {
+  try {
     firstFive = posts.slice(fromNum, toNum);
+  } catch (error) {
+    console.log(error);
   }
+
+  // if (posts !== undefined) {
+  // }
 
   console.log(firstFive);
 
