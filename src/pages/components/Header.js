@@ -6,7 +6,7 @@ export default function Header() {
     <div id="header">
       <div className="site-branding">
         <div className="site-title">
-          <Link href="/">Kristof Nemeth</Link>
+          <Link href="/blog">Kristof Nemeth</Link>
         </div>
         <div className="site-summary">
           I write about Direct Response, Copywriting and Psychology.
