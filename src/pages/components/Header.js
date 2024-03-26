@@ -15,8 +15,8 @@ export default function Header() {
       <div className="navigation">
         <div className="nav-main">
           {/* <span> */}
-          {/* <Link href="#">Newsletter</Link> */}
-          {/* <Link href="#">Archive</Link> */}
+          <Link href="/blog">Blog</Link>
+          <Link href="/contact">Contact</Link>
           {/* </span> */}
         </div>
       </div>

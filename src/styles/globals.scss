@@ -147,6 +147,7 @@ body {
           text-align: center;
           font-family: $roman;
           margin-bottom: 25px;
+          margin-top: 30px;
           line-height: 1;
         }
         p {
@@ -187,6 +188,16 @@ body {
         }
       }
     }
+
+    #contact {
+      #hero {
+        h1 {
+          font-size: 52px;
+          font-family: $roman;
+          margin: 30px 0 25px 0;
+        }
+      }
+    }
   }
 }
 
@@ -202,6 +213,15 @@ body {
         .site-branding {
           .site-summary {
             line-height: 1.45;
+          }
+        }
+
+        .navigation {
+          .nav-main {
+            a {
+              font-size: 16.5px;
+              height: 60px;
+            }
           }
         }
       }
@@ -310,6 +330,14 @@ body {
 
           button:hover {
             color: #555555;
+          }
+        }
+      }
+
+      #contact {
+        #hero {
+          h1 {
+            font-size: 45px;
           }
         }
       }
