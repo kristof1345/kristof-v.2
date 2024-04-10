@@ -1,8 +1,15 @@
 import React from "react";
+import Link from "next/link";
 
 const PostTitle = ({ children }) => {
+  console.log(children.slug);
   return (
-    <h2 className="post-title" dangerouslySetInnerHTML={{ __html: children }} />
+    <Link href={`/post/${children.slug}`}>
+      <h2
+        className="post-title"
+        dangerouslySetInnerHTML={{ __html: children.title }}
+      />
+    </Link>
   );
 };
 

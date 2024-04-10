@@ -189,6 +189,34 @@ body {
       }
     }
 
+    #singular-post {
+      padding: 10px 0 50px 0;
+
+      .post-title {
+        font-size: 30px;
+        line-height: 1.2;
+      }
+
+      .blog-sub-holder {
+        text-align: center;
+        padding: 10px 50px 0 50px;
+
+        h3 {
+          font-weight: 700;
+          font-size: 21px;
+          margin-bottom: 0;
+        }
+
+        iframe {
+          width: 400px;
+        }
+
+        div {
+          font-size: 14px;
+        }
+      }
+    }
+
     #contact {
       #hero {
         h1 {
@@ -330,6 +358,28 @@ body {
 
           button:hover {
             color: #555555;
+          }
+        }
+      }
+
+      #singular-post {
+        padding-bottom: 50px;
+        padding-top: 10px;
+
+        .post-title {
+          font-size: 30px;
+          line-height: 1.2;
+        }
+
+        .blog-sub-holder {
+          padding: 10px 0px 0 0px;
+
+          h3 {
+            font-size: 20px;
+          }
+
+          iframe {
+            width: 100%;
           }
         }
       }
