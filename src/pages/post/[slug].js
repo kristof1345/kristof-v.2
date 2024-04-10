@@ -1,6 +1,5 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { GetStaticPaths, GetStaticProps } from "next";
 import { getPosts } from "@/lib/api";
 import PostBody from "../components/PostBody";
 
@@ -9,7 +8,7 @@ export default function PostSlug({ allPosts }) {
   const { slug } = router.query;
   let neededPost;
 
-  let allActualPosts = allPosts.data.posts;
+  let allActualPosts = allPosts?.data.posts;
 
   if (allActualPosts === undefined || allActualPosts.length < 0) {
     allActualPosts = "";

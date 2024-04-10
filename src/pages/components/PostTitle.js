@@ -3,10 +3,10 @@ import Link from "next/link";
 
 const PostTitle = ({ children }) => {
   return (
-    <Link href={`/post/${children.slug}`}>
+    <Link href={`/post/${children?.slug}`}>
       <h2
         className="post-title"
-        dangerouslySetInnerHTML={{ __html: children.title }}
+        dangerouslySetInnerHTML={{ __html: children?.title }}
       />
     </Link>
   );
