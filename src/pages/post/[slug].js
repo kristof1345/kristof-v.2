@@ -8,7 +8,6 @@ export default function PostSlug({ allPosts }) {
   const router = useRouter();
   const { slug } = router.query;
   let neededPost;
-  console.log(allPosts);
 
   let allActualPosts = allPosts.data.posts;
 
@@ -27,8 +26,6 @@ export default function PostSlug({ allPosts }) {
       }
     });
   }
-
-  console.log(neededPost);
 
   return (
     <div id="singular-post">

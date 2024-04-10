@@ -16,8 +16,6 @@ export default function UnfoldPosts({ posts, fromNum, toNum }) {
   // if (posts !== undefined) {
   // }
 
-  console.log(firstFive);
-
   return (
     <div>
       {posts &&

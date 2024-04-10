@@ -85,8 +85,6 @@ export default function Blog({ posts }) {
 }
 
 export async function getServerSideProps({ params }) {
-  console.log(params);
-
   // Fetch data for the specific post
   const posts = await getPosts();
 

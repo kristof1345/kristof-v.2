@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 
 const PostTitle = ({ children }) => {
-  console.log(children.slug);
   return (
     <Link href={`/post/${children.slug}`}>
       <h2

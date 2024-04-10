@@ -13,8 +13,6 @@ export default function Blog({ allPosts }) {
   const router = useRouter();
   const { page } = router.query;
 
-  console.log(allPosts);
-
   let allActualPosts = allPosts.data.posts;
 
   if (allActualPosts === undefined || allActualPosts.length < 0) {
