@@ -87,12 +87,20 @@ body {
         }
 
         h1 {
-          font-size: 54px;
+          font-size: 70px;
           font-family: $roman;
-          margin-bottom: 25px;
           line-height: 1;
-          margin-top: 0;
+          font-weight: 800;
+          margin-top: 10px;
+          margin-bottom: 10px;
         }
+
+        h2 {
+          margin-bottom: 15px;
+          font-weight: 600;
+          font-size: 22px;
+        }
+
         .home-sub-holder {
           min-width: 350px;
         }
@@ -270,12 +278,16 @@ body {
           }
 
           h1 {
-            font-size: 45px;
-            font-family: $roman;
-            margin-bottom: 25px;
+            font-size: 15vw;
+            margin-bottom: 2px;
             line-height: 1;
             margin-top: 0;
           }
+
+          h2 {
+            font-size: 20px;
+          }
+
           .home-sub-holder {
             min-width: 350px;
           }
