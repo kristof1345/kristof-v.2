@@ -17,6 +17,9 @@ export default function Header() {
           {/* <span> */}
           <Link href="/blog">Blog</Link>
           <Link href="/contact">Contact</Link>
+          <Link href="https://kristofs-newsletter-8353d2.beehiiv.com/">
+            Archive
+          </Link>
           {/* </span> */}
         </div>
       </div>
