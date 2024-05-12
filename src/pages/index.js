@@ -1,8 +1,15 @@
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Home() {
   return (
     <>
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="4ifxdm4R0ojSi1-7rUKyByzVh06Pj8xhnfGvp9lYjL0"
+        />
+      </Head>
       <main id="home">
         <section id="headline">
           <p>FREE book reveals...</p>
