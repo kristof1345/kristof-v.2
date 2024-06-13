@@ -63,7 +63,7 @@ export default function Blog({ allPosts }) {
     setToNum(endNumber);
     console.log("change");
     // handleClick();
-  });
+  }, [startNumber, endNumber]);
 
   // async function handleClick() {
   //   const endpointData = await getData();
