@@ -7,6 +7,8 @@ export default function UnfoldPosts({ posts, fromNum, toNum }) {
   // let toNum = 5;
   let firstFive;
 
+  console.log(posts);
+
   try {
     firstFive = posts.slice(fromNum, toNum);
   } catch (error) {

@@ -1,43 +1,57 @@
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import axios from "axios";
-import Post from "./components/Post";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { getPosts } from "@/lib/api";
+import UnfoldPosts from "./components/UnfoldPosts";
 
 // `https://public-api.wordpress.com/rest/v1/sites/nonfictium.wordpress.com/posts?number=2&page=${page}`
 
-export default function Blog({ posts }) {
+export default function Blog({ allPosts }) {
+  const [fromNum, setFromNum] = useState(0);
+  const [toNum, setToNum] = useState(5);
   const router = useRouter();
   const { page } = router.query;
+  let realPageValue = page;
 
-  // const [postObject, setPostObject] = useState([]);
+  if (realPageValue === undefined) {
+    realPageValue = 1;
+  }
 
-  // console.log(posts.data.posts);
+  console.log("real page " + realPageValue);
+  let startNumber = realPageValue * 5 - 5;
+  let endNumber = realPageValue * 5;
+  console.log(startNumber, endNumber, fromNum, toNum);
+
+  let allActualPosts = allPosts.data.posts;
+
+  if (allActualPosts === undefined || allActualPosts.length < 0) {
+    allActualPosts = "";
+  }
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
 
   // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `https://public-api.wordpress.com/rest/v1/sites/nonfictium.wordpress.com/posts?number=2&page=${page}`
-  //     )
-  //     .then(function (response) {
-  //       // handle success
-  //       // console.log(response.data.posts);
-  //       setPostObject(response.data.posts);
-  //     })
-  //     .catch(function (error) {
-  //       // handle error
-  //       console.log(error);
-  //     });
-  // }, [page]);
+  // }, []);
 
-  if (page === "0") {
-    window.location.href = "http://localhost:3000/blog?page=1";
-  }
+  // if (page === undefined) {
+  //   // window.location.href = "http://localhost:3000/blog?page=1";
+  //   router.push("/blog?page=1");
+  // }
+
+  const goNext = () => {
+    setFromNum(fromNum + 5);
+    setToNum(toNum + 5);
+  };
+
+  const goPrev = () => {
+    if (fromNum !== 0) {
+      setFromNum(fromNum - 5);
+      setToNum(toNum - 5);
+    }
+  };
 
   return (
     <>
@@ -67,38 +81,32 @@ export default function Blog({ posts }) {
           </div>
         </section>
         <section id="main-page-content">
-          {/* {console.log(postObject)} */}
-          {posts.data.posts.length > 0 &&
-            posts.data.posts.map((post, i) => <Post key={i} post={post} />)}
+          {allActualPosts.length > 0 && (
+            <UnfoldPosts
+              posts={allActualPosts}
+              fromNum={fromNum}
+              toNum={toNum}
+            />
+          )}
         </section>
         <div id="blog-pagination">
-          <Link href={`/blog?page=${page === undefined ? 1 : +page - 1}`}>
-            Previous page
-          </Link>
-          <Link href={`/blog?page=${page === undefined ? 2 : +page + 1}`}>
-            Next page
-          </Link>
+          <button disabled={fromNum <= 0 ? "disabled" : ""} onClick={goPrev}>
+            Previous Page
+          </button>
+          <Link href={`/blog?page=${realPageValue + 1}`}>Next Page</Link>
+          <button onClick={goNext}>Next Page</button>
         </div>
       </main>
     </>
   );
 }
 
-export async function getServerSideProps({ params }) {
+export async function getStaticProps() {
   // Fetch data for the specific post
-  const posts = await getPosts();
-
-  // console.log(posts);
-
-  // Set default values if the post is not found
-  const defaultPost = {
-    title: "Default Title",
-    content: "Default Content",
-  };
+  const allPosts = await getPosts();
 
   return {
-    props: {
-      posts: posts || defaultPost,
-    },
+    props: { allPosts },
+    revalidate: 10,
   };
 }

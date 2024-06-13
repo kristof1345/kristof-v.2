@@ -1,17 +1,52 @@
 import { useEffect, useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { getPosts } from "@/lib/api";
 import UnfoldPosts from "./components/UnfoldPosts";
 
-// `https://public-api.wordpress.com/rest/v1/sites/nonfictium.wordpress.com/posts?number=2&page=${page}`
+// const getData = async () => {
+//   console.log("data from server");
+//   const response = await get(`posts`);
+//   return response?.data;
+// };
+
+// export async function getServerSideProps() {
+//   const data = await getData();
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }
+
+// const getData = async () => {
+//   console.log("data from server");
+//   const response = await axios.get(
+//     "https://public-api.wordpress.com/rest/v1/sites/nonfictium.wordpress.com/posts"
+//   );
+//   return response?.data;
+// };
 
 export default function Blog({ allPosts }) {
   const [fromNum, setFromNum] = useState(0);
   const [toNum, setToNum] = useState(5);
+
   const router = useRouter();
   const { page } = router.query;
+  let realPageValue = page;
+
+  const [data, setData] = useState(null);
+
+  console.log(data);
+
+  if (realPageValue === undefined) {
+    realPageValue = 1;
+  }
+
+  console.log("real page " + realPageValue);
+  let startNumber = realPageValue * 5 - 5;
+  let endNumber = realPageValue * 5;
 
   let allActualPosts = allPosts.data.posts;
 
@@ -23,9 +58,24 @@ export default function Blog({ allPosts }) {
     return <div>Loading...</div>;
   }
 
-  if (page === "0") {
-    window.location.href = "http://localhost:3000/blog?page=1";
-  }
+  useEffect(() => {
+    setFromNum(startNumber);
+    setToNum(endNumber);
+    console.log("change");
+    // handleClick();
+  });
+
+  // async function handleClick() {
+  //   const endpointData = await getData();
+  //   setData(endpointData);
+  // }
+
+  console.log(startNumber, endNumber, fromNum, toNum);
+
+  // if (page === undefined) {
+  //   // window.location.href = "http://localhost:3000/blog?page=1";
+  //   router.push("/blog?page=1");
+  // }
 
   const goNext = () => {
     setFromNum(fromNum + 5);
@@ -76,10 +126,18 @@ export default function Blog({ allPosts }) {
           )}
         </section>
         <div id="blog-pagination">
-          <button disabled={fromNum <= 0 ? "disabled" : ""} onClick={goPrev}>
+          {/* <button disabled={fromNum <= 0 ? "disabled" : ""} onClick={goPrev}>
             Previous Page
-          </button>
-          <button onClick={goNext}>Next Page</button>
+          </button> */}
+          <Link
+            // disablePointerEvents
+            style={fromNum <= 0 ? { pointerEvents: "none" } : {}}
+            href={`/blog?page=${+realPageValue - 1}`}
+          >
+            Previous Page
+          </Link>
+          {/* <button onClick={goNext}>Next Page</button> */}
+          <Link href={`/blog?page=${+realPageValue + 1}`}>Next Page</Link>
         </div>
       </main>
     </>
