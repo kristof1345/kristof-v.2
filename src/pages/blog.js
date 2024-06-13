@@ -36,9 +36,9 @@ export default function Blog({ allPosts }) {
   const { page } = router.query;
   let realPageValue = page;
 
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
 
-  console.log(data);
+  // console.log(data);
 
   if (realPageValue === undefined) {
     realPageValue = 1;
@@ -61,33 +61,30 @@ export default function Blog({ allPosts }) {
   useEffect(() => {
     setFromNum(startNumber);
     setToNum(endNumber);
-    console.log("change");
     // handleClick();
-  }, [startNumber, endNumber]);
+  }, [startNumber, endNumber, fromNum, toNum]);
 
   // async function handleClick() {
   //   const endpointData = await getData();
   //   setData(endpointData);
   // }
 
-  console.log(startNumber, endNumber, fromNum, toNum);
-
   // if (page === undefined) {
   //   // window.location.href = "http://localhost:3000/blog?page=1";
   //   router.push("/blog?page=1");
   // }
 
-  const goNext = () => {
-    setFromNum(fromNum + 5);
-    setToNum(toNum + 5);
-  };
+  // const goNext = () => {
+  //   setFromNum(fromNum + 5);
+  //   setToNum(toNum + 5);
+  // };
 
-  const goPrev = () => {
-    if (fromNum !== 0) {
-      setFromNum(fromNum - 5);
-      setToNum(toNum - 5);
-    }
-  };
+  // const goPrev = () => {
+  //   if (fromNum !== 0) {
+  //     setFromNum(fromNum - 5);
+  //     setToNum(toNum - 5);
+  //   }
+  // };
 
   return (
     <>
