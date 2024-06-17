@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const PostTitle = ({ children }) => {
+export default function PostTitle({ children }) {
   console.log(children);
 
   return (
@@ -12,6 +12,4 @@ const PostTitle = ({ children }) => {
       />
     </Link>
   );
-};
-
-export default PostTitle;
+}
