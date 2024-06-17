@@ -2,8 +2,10 @@ import React from "react";
 import Link from "next/link";
 
 const PostTitle = ({ children }) => {
+  console.log(children);
+
   return (
-    <Link href={`/post/${children?.slug}`}>
+    <Link target="_blank" href={`${children.URL}`}>
       <h2
         className="post-title"
         dangerouslySetInnerHTML={{ __html: children?.title }}
