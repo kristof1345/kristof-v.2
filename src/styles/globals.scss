@@ -185,13 +185,13 @@ body {
         display: flex;
         gap: 10px;
 
-        button {
+        .pagination-button {
           border: none;
           text-decoration: underline;
           font-size: 19px;
         }
 
-        button:hover {
+        .pagination-button:hover {
           color: #555555;
         }
       }
