@@ -8,7 +8,7 @@ export async function getServerSideProps({ params }) {
   console.log(params);
   const pageNumber = params.number; // This will be '1', '2', '3', ...
   const res = await axios.get(
-    `https://public-api.wordpress.com/rest/v1/sites/nonfictium.wordpress.com/posts?page=${pageNumber}`
+    `https://public-api.wordpress.com/rest/v1/sites/kristofnemeth.wordpress.com/posts?page=${pageNumber}`
   );
   const data = res.data;
 
